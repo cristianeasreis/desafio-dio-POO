@@ -6,13 +6,17 @@ import java.util.Optional;
 import java.util.Set;
 
 public class Dev {
-    private String nome;
+    private final String nome;
     private final Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private final Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
-    public void inscreverBootcamp(Bootcamp bootcamp) {
-        conteudosInscritos.addAll(bootcamp.getConteudos());
-        bootcamp.getDevsInscritos().add(this);
+    public Dev(String nome) {
+        this.nome = nome;
+    }
+
+    public void inscreverBootcamp(br.com.dio.desafio.dominio.Bootcamp bootcamp) {
+        conteudosInscritos.addAll(bootcamp.conteudos());
+        bootcamp.registrarDev(this);
     }
 
     public void progredir() {
@@ -29,20 +33,16 @@ public class Dev {
                 .sum();
     }
 
-    public String getNome() {
+    public String nome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public int totalConteudosInscritos() {
+        return conteudosInscritos.size();
     }
 
-    public Set<Conteudo> getConteudosInscritos() {
-        return conteudosInscritos;
-    }
-
-    public Set<Conteudo> getConteudosConcluidos() {
-        return conteudosConcluidos;
+    public int totalConteudosConcluidos() {
+        return conteudosConcluidos.size();
     }
 
     @Override

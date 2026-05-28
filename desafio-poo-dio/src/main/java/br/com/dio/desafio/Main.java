@@ -9,37 +9,25 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Curso cursoJava = new Curso();
-        cursoJava.setTitulo("Curso Java");
-        cursoJava.setDescricao("Aprenda os fundamentos de Java e POO");
-        cursoJava.setCargaHoraria(8);
+        Curso cursoJava = new Curso("Curso Java", "Aprenda os fundamentos de Java e POO", 8);
 
-        Curso cursoJs = new Curso();
-        cursoJs.setTitulo("Curso JavaScript");
-        cursoJs.setDescricao("Conceitos iniciais de JavaScript");
-        cursoJs.setCargaHoraria(4);
+        Curso cursoJs = new Curso("Curso JavaScript", "Conceitos iniciais de JavaScript", 4);
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("Mentoria de Carreira");
-        mentoria.setDescricao("Dicas para evoluir como dev");
-        mentoria.setData(LocalDate.now());
+        Mentoria mentoria = new Mentoria("Mentoria de Carreira", "Dicas para evoluir como dev", LocalDate.now());
 
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp GFT Java");
-        bootcamp.setDescricao("Bootcamp para acelerar sua jornada Java");
-        bootcamp.getConteudos().add(cursoJava);
-        bootcamp.getConteudos().add(cursoJs);
-        bootcamp.getConteudos().add(mentoria);
+        Bootcamp bootcamp = new Bootcamp("Bootcamp GFT Java", "Bootcamp para acelerar sua jornada Java");
+        bootcamp.adicionarConteudo(cursoJava);
+        bootcamp.adicionarConteudo(cursoJs);
+        bootcamp.adicionarConteudo(mentoria);
 
-        Dev camila = new Dev();
-        camila.setNome("Camila");
-        camila.inscreverBootcamp(bootcamp);
-        camila.progredir();
-        camila.progredir();
+        Dev cristiane = new Dev("Cristiane");
+        cristiane.inscreverBootcamp(bootcamp);
+        cristiane.progredir();
+        cristiane.progredir();
 
-        System.out.println("Dev: " + camila.getNome());
-        System.out.println("Concluidos: " + camila.getConteudosConcluidos().size());
-        System.out.println("Inscritos: " + camila.getConteudosInscritos().size());
-        System.out.println("XP total: " + camila.calcularTotalXp());
+        System.out.println("Dev: " + cristiane.nome());
+        System.out.println("Concluidos: " + cristiane.totalConteudosConcluidos());
+        System.out.println("Inscritos: " + cristiane.totalConteudosInscritos());
+        System.out.println("XP total: " + cristiane.calcularTotalXp());
     }
 }
