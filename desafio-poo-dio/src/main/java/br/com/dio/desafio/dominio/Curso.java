@@ -5,8 +5,12 @@ import java.util.Objects;
 public class Curso extends Conteudo {
 
     private final int cargaHoraria;
+
     public Curso(String titulo, String descricao, int cargaHoraria) {
         super(titulo, descricao);
+        if (cargaHoraria <= 0) {
+            throw new IllegalArgumentException("A carga horaria deve ser maior que zero.");
+        }
         this.cargaHoraria = cargaHoraria;
     }
 
@@ -28,5 +32,10 @@ public class Curso extends Conteudo {
     @Override
     public int hashCode() {
         return Objects.hash(titulo, descricao, cargaHoraria);
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{titulo='" + titulo + "', cargaHoraria=" + cargaHoraria + "}";
     }
 }

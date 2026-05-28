@@ -10,9 +10,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
         Curso cursoJava = new Curso("Curso Java", "Aprenda os fundamentos de Java e POO", 8);
-
         Curso cursoJs = new Curso("Curso JavaScript", "Conceitos iniciais de JavaScript", 4);
-
         Mentoria mentoria = new Mentoria("Mentoria de Carreira", "Dicas para evoluir como dev", LocalDate.now());
 
         Bootcamp bootcamp = new Bootcamp("Bootcamp GFT Java", "Bootcamp para acelerar sua jornada Java");
@@ -25,9 +23,18 @@ public class Main {
         cristiane.progredir();
         cristiane.progredir();
 
-        System.out.println("Dev: " + cristiane.nome());
-        System.out.println("Concluidos: " + cristiane.totalConteudosConcluidos());
-        System.out.println("Inscritos: " + cristiane.totalConteudosInscritos());
-        System.out.println("XP total: " + cristiane.calcularTotalXp());
+        Dev israel = new Dev("Israel");
+        israel.inscreverBootcamp(bootcamp);
+        israel.progredir();
+
+        System.out.println("---- Cristiane ----");
+        System.out.println("Conteudos inscritos: " + cristiane.conteudosInscritos());
+        System.out.println("Conteudos concluidos: " + cristiane.conteudosConcluidos());
+        System.out.println("XP: " + cristiane.calcularTotalXp());
+
+        System.out.println("---- Israel ----");
+        System.out.println("Conteudos inscritos: " + israel.conteudosInscritos());
+        System.out.println("Conteudos concluidos: " + israel.conteudosConcluidos());
+        System.out.println("XP: " + israel.calcularTotalXp());
     }
 }

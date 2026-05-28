@@ -5,8 +5,12 @@ import java.util.Objects;
 
 public class Mentoria extends Conteudo {
     private final LocalDate data;
+
     public Mentoria(String titulo, String descricao, LocalDate data) {
         super(titulo, descricao);
+        if (data == null) {
+            throw new IllegalArgumentException("A data da mentoria e obrigatoria.");
+        }
         this.data = data;
     }
 
@@ -33,5 +37,9 @@ public class Mentoria extends Conteudo {
     public int hashCode() {
         return Objects.hash(titulo, descricao, data);
     }
-}
 
+    @Override
+    public String toString() {
+        return "Mentoria{titulo='" + titulo + "', data=" + data + "}";
+    }
+}

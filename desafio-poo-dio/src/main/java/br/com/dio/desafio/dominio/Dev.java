@@ -1,8 +1,9 @@
 package br.com.dio.desafio.dominio;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 
 public class Dev {
@@ -11,20 +12,27 @@ public class Dev {
     private final Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
     public Dev(String nome) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("O nome do dev e obrigatorio.");
+        }
         this.nome = nome;
     }
 
-    public void inscreverBootcamp(br.com.dio.desafio.dominio.Bootcamp bootcamp) {
-        conteudosInscritos.addAll(bootcamp.conteudos());
+    public void inscreverBootcamp(Bootcamp bootcamp) {
+        Objects.requireNonNull(bootcamp, "O bootcamp nao pode ser nulo.");
+        conteudosInscritos.addAll(bootcamp.conteudosDisponiveis());
         bootcamp.registrarDev(this);
     }
 
-    public void progredir() {
-        Optional<Conteudo> conteudo = conteudosInscritos.stream().findFirst();
-        if (conteudo.isPresent()) {
-            conteudosConcluidos.add(conteudo.get());
-            conteudosInscritos.remove(conteudo.get());
+    public boolean progredir() {
+        Iterator<Conteudo> iterator = conteudosInscritos.iterator();
+        if (!iterator.hasNext()) {
+            return false;
         }
+        Conteudo conteudo = iterator.next();
+        iterator.remove();
+        conteudosConcluidos.add(conteudo);
+        return true;
     }
 
     public double calcularTotalXp() {
@@ -45,6 +53,14 @@ public class Dev {
         return conteudosConcluidos.size();
     }
 
+    public Set<Conteudo> conteudosInscritos() {
+        return Collections.unmodifiableSet(conteudosInscritos);
+    }
+
+    public Set<Conteudo> conteudosConcluidos() {
+        return Collections.unmodifiableSet(conteudosConcluidos);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -62,4 +78,3 @@ public class Dev {
         return Objects.hash(nome);
     }
 }
-

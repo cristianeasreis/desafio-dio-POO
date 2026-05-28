@@ -9,11 +9,18 @@ public abstract class Conteudo {
     protected final String descricao;
 
     protected Conteudo(String titulo, String descricao) {
-        this.titulo = titulo;
-        this.descricao = descricao;
+        this.titulo = validarTextoObrigatorio(titulo, "titulo");
+        this.descricao = validarTextoObrigatorio(descricao, "descricao");
     }
 
     public abstract double calcularXp();
+
+    private String validarTextoObrigatorio(String valor, String campo) {
+        if (valor == null || valor.isBlank()) {
+            throw new IllegalArgumentException("O campo '" + campo + "' e obrigatorio.");
+        }
+        return valor;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -32,5 +39,9 @@ public abstract class Conteudo {
     public int hashCode() {
         return Objects.hash(titulo, descricao);
     }
-}
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{titulo='" + titulo + "', descricao='" + descricao + "'}";
+    }
+}
