@@ -133,7 +133,61 @@ Vejamos alguns Subparadigmas do Paradigma Declarativo e exemplos linguagens de p
 🔹 2.2 Paradigma Lógico: Prolog<br>
 </p>
 
-<h2> 🤝 Contribuindo </h2>
+
+## 📌Partes adicionadas na funcionalidade
+
+Este projeto implementa operações básicas de um sistema utilizando o padrão **CRUD** juntamente com a validação por **Smoke Test** para garantir a integridade inicial da aplicação.
+
+### 🔄 Operações 
+
+As operações CRUD representam as ações fundamentais para manipulação de dados:
+
+- **Create (Criar)**  
+  Permite a criação de novos registros na aplicação.
+
+- **Update (Atualizar)**  
+  Permite a modificação de registros já existentes.
+
+- **Delete (Excluir)**  
+  Remove registros da base de dados.
+
+Essas operações estão expostas por meio de endpoints/serviços, permitindo interação completa com os recursos da aplicação.
+
+---
+
+## 🧪 Smoke Test
+
+Os **Smoke Tests** foram implementados com o objetivo de validar rapidamente se as principais funcionalidades da aplicação estão operacionais após deploy ou alterações.
+
+### 🎯 Objetivo
+
+- Garantir que a aplicação está estável para testes mais aprofundados  
+- Validar os fluxos críticos do sistema  
+- Identificar falhas graves rapidamente  
+
+### ✅ Cenários Validados
+
+Os testes de fumaça cobrem os principais fluxos, como:
+
+- Criação de registro (Create)
+- Atualização de informações (Update)
+- Exclusão de registros (Delete)
+
+
+### ⚡ Características
+
+- Execução rápida
+- Cobertura dos fluxos principais (não exaustiva)
+- Resultado simples: **Passou ou Falhou**
+
+---
+
+## 🚀 Considerações
+
+Os Smoke Tests atuam como uma primeira linha de validação garantindo que o sistema esteja pronto para etapas mais avançadas de testes, como testes funcionais, integração ou regressão.
+
+A combinação de **CRUD + Smoke Test** assegura que as operações essenciais do sistema estejam funcionando corretamente desde os estágios iniciais.
+
 
 <p>
 
@@ -141,4 +195,4 @@ Vejamos alguns Subparadigmas do Paradigma Declarativo e exemplos linguagens de p
 
 ------------
 
-Disponibilizado com ♥ por [cami-la](https://www.linkedin.com/in/cami-la/ "cami-la").
+
